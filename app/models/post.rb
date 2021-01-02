@@ -3,6 +3,7 @@ class Post
 
   field :title, type: String
   field :body, type: String
+  field :likes, type: Integer, default: 0
 
   has_many :comments
 end

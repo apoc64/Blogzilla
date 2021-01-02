@@ -1,5 +1,7 @@
 <h3><%= @post.title %></h3>
 <p><%= @post.body %></p>
+<p>Likes: <%= @post.likes %></p>
+<%= button_to 'Like', post_path(@post), method: 'patch', params: {like: true} %>
 <hr>
 
 <% if @post.comments.count > 0 %>

@@ -18,6 +18,13 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def update
+    if params[:like]
+      post = Post.find(params[:id])
+      post.inc(likes: 1)
+    end
+  end
+
   private
 
   def post_params

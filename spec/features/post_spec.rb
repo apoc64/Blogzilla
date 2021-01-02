@@ -41,3 +41,18 @@ describe 'post index' do
     expect(current_path).to eq(post_path(post2))
   end
 end
+
+describe 'likes' do
+  it 'can like a posts' do
+    post = Post.create(title: 'Cool Post', body: 'Whoa yeah!')
+
+    visit post_path(post)
+
+    expect(page).to have_content('Likes: 0')
+    expect(post.likes).to eq(0)
+
+    click_on 'Like'
+
+    expect(Post.first.likes).to eq(1)
+  end
+end

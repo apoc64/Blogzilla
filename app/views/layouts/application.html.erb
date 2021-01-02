@@ -7,9 +7,21 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="navbar-fixed">
+      <nav class="green darken-2">
+        <div class="container">
+          <h5>Blogzilla</h5>
+        </div>
+      </nav>
+    </div>
+
+    <div class=container>
+      <%= yield %>
+    </div>
   </body>
 </html>

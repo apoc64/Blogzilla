@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+.post, .comment-section, .comments {
+  padding: 0rem 1rem 1rem 1rem;
+}
+
+.center {
+  margin: auto;
+}

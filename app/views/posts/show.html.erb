@@ -1,27 +1,33 @@
-<h3><%= @post.title %></h3>
-<p><%= @post.body %></p>
-<div id="likes">
-  <script>initialLikeCount = <%= @post.likes %></script>
-  <p>Likes: <span data-bind="text: likesCount"></span></p>
-  <div data-bind="click: likePost">
-    <%= button_to 'Like', post_path(@post), method: 'patch', params: {like: true} %>
+<div class="card post">
+  <h3><%= @post.title %></h3>
+  <p><%= @post.body %></p>
+  <div id="likes">
+    <script>initialLikeCount = <%= @post.likes %></script>
+    <p>Likes: <span data-bind="text: likesCount"></span></p>
+    <div data-bind="click: likePost">
+      <%= button_to 'Like', post_path(@post), method: 'patch', params: {like: true} %>
+    </div>
   </div>
 </div>
 
-<% if @post.comments.count > 0 %>
-  <h5>Comments</h5>
-  <% @post.comments.each do |comment| %>
-    <p><%= comment.text %></p>
+<div class="comment-section">
+  <% if @post.comments.count > 0 %>
+    <h5>Comments:</h5>
+    <div class="comments">
+      <% @post.comments.each do |comment| %>
+        <p><%= comment.text %></p>
+      <% end %>
+    </div>
   <% end %>
-<% end %>
 
-<hr>
+  <hr>
 
-<h5>Add Comment:</h5>
-<%= form_for @comment do |f| %>
-  <%= f.text_field :text, placeholder: 'Comment' %>
-  <%= f.hidden_field 'post_id', value: @post.id %>
-  <%= f.submit %>
-<% end %>
+  <h5>Add Comment:</h5>
+  <%= form_for @comment do |f| %>
+    <%= f.text_field :text, placeholder: 'Comment' %>
+    <%= f.hidden_field 'post_id', value: @post.id %>
+    <%= f.submit %>
+  <% end %>
+</div>
 
-<p><%= link_to 'All Posts', posts_path %> | <%= link_to 'New Post', new_post_path %></p>
+<p class="center"><%= link_to 'All Posts', posts_path %> | <%= link_to 'New Post', new_post_path %></p>

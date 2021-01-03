@@ -1,24 +1,23 @@
-# README
+# Blogzilla
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple blog with comments and likes. It uses Rails, MongoDB, Mongoid, and KnockoutJS
 
-Things you may want to cover:
+### Setup:
 
-* Ruby version
+This uses Ruby 2.6.3, Rails 6.0.3 and MongoDB Community 4.2. Once your environment is configured and the repo cloned, run:
+```
+bundle install
+```
 
-* System dependencies
+To run the server on localhost:3000, run:
+`rails s`
 
-* Configuration
+To run the tests, run:
+`rspec`
 
-* Database creation
+To enter the Rails console, run:
+`rails c`
 
-* Database initialization
+### Features
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This app allows visitors to view and create blog posts, and comment on or like other blog posts. Posts and comments are stored in MongoDB. The like counter is incremented using KnockoutJS without waiting for the page to reload.

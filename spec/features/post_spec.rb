@@ -48,7 +48,6 @@ describe 'likes' do
 
     visit post_path(post)
 
-    expect(page).to have_content('Likes: 0')
     expect(post.likes).to eq(0)
 
     click_on 'Like'

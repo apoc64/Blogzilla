@@ -1,8 +1,12 @@
 <h3><%= @post.title %></h3>
 <p><%= @post.body %></p>
-<p>Likes: <%= @post.likes %></p>
-<%= button_to 'Like', post_path(@post), method: 'patch', params: {like: true} %>
-<hr>
+<div id="likes">
+  <script>initialLikeCount = <%= @post.likes %></script>
+  <p>Likes: <span data-bind="text: likesCount"></span></p>
+  <div data-bind="click: likePost">
+    <%= button_to 'Like', post_path(@post), method: 'patch', params: {like: true} %>
+  </div>
+</div>
 
 <% if @post.comments.count > 0 %>
   <h5>Comments</h5>
@@ -11,10 +15,11 @@
   <% end %>
 <% end %>
 
-<h5>Add Comment</h5>
+<hr>
+
+<h5>Add Comment:</h5>
 <%= form_for @comment do |f| %>
-  <%= f.label :text %>
-  <%= f.text_field :text %>
+  <%= f.text_field :text, placeholder: 'Comment' %>
   <%= f.hidden_field 'post_id', value: @post.id %>
   <%= f.submit %>
 <% end %>
